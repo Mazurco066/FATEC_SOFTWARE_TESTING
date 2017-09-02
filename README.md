@@ -2,7 +2,7 @@
 Software Testing Projects with JUnit
 
 ## Tester
-8 **Gabriel Mazurco Ribeiro**
+* **Gabriel Mazurco Ribeiro**
 
 ## Objective
 This repository was created to store the projects done in the discipline of software-testing in FATEC
