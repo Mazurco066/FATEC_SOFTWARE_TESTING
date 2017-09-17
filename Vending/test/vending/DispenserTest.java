@@ -276,4 +276,100 @@ public class DispenserTest {
         assertEquals(resultado, resultadoEsperado);    
     }
     
+    //TESTES ADICIONAIS
+    
+    /**
+     * Teste que simula o estoque da maquina acabando.
+     * 
+     * @throws Exception 
+     */
+    @Test(expected = vending.UnavailableItemException.class)
+    public void StockOverflow() throws Exception{
+        
+        System.out.println("Teste 12 - Estouro de Estoque");
+        
+        //Valores
+        int centavos = 1000;
+        int itemDesejado = 7;
+        int resultadoEsperado = 50;
+        int resultado;
+        
+        //Instanciando objeto
+        Dispenser ds = new Dispenser();
+        
+        for (int i = 0; i < 10; i++){   //Forçando o estouro do estoque acabando com os 10 items registrados
+            
+            //Chamando método e checando resultados
+            resultado = ds.dispense(centavos, itemDesejado);
+            assertEquals(resultado, resultadoEsperado); 
+        }
+        
+        //Chamando método e checando resultados agora com o limite zerado pelo for acima
+        resultado = ds.dispense(centavos, itemDesejado);
+        assertEquals(resultado, resultadoEsperado);    
+        
+    }
+    
+    /**
+     * Teste que gasta as moedas ate elas ficarem insuficientes no decimo item
+     * é esperado que ao tentar comprar o decimo item ja dispare a exceção
+     * de moedas insuficientes
+     * 
+     * @throws Exception 
+     */
+    @Test(expected = vending.NotEnoughtCreditException.class)
+    public void SpendingCoins() throws Exception{
+        
+        System.out.println("Teste 13 - Estouro de Moedas");
+        
+        //Valores
+        int centavos = 1900;
+        int itemDesejado = 8;
+        int resultadoEsperado = 200;
+        int resultado;
+        
+        //Instanciando objeto
+        Dispenser ds = new Dispenser();
+        
+        for (int i = 0; i < 10; i++){   //Forçando o estouro do estoque acabando com os 10 items registrados
+            
+            //Chamando método e checando resultados
+            resultado = ds.dispense(centavos, itemDesejado);
+            assertEquals(resultado, resultadoEsperado);
+            centavos -= 200;
+        }  
+        
+    }
+    
+    /**
+     * Teste que gasta as moedas ate elas acabarem no nono item
+     * é esperado que ao tentar comprar o decimo item ja dispare a exceção
+     * de moedas insuficientes
+     * 
+     * @throws Exception 
+     */
+    @Test(expected = vending.NoCoinsException.class)
+    public void SpendingCoinsToZero() throws Exception{
+        
+        System.out.println("Teste 14 - Estouro de Moedas a Zero");
+        
+        //Valores
+        int centavos = 900;
+        int itemDesejado = 9;
+        int resultadoEsperado = 100;
+        int resultado;
+        
+        //Instanciando objeto
+        Dispenser ds = new Dispenser();
+        
+        for (int i = 0; i < 10; i++){   //Forçando o estouro do estoque acabando com os 10 items registrados
+            
+            //Chamando método e checando resultados
+            resultado = ds.dispense(centavos, itemDesejado);
+            assertEquals(resultado, resultadoEsperado);
+            centavos -= 100;
+        }  
+        
+    }
+    
 }
