@@ -1,0 +1,180 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>multiTest.sikuli</h2> <a href="multiTest.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="cmt">#Iniciando o navegador e acessando a página de login que se deseja testar</span>
+<span class="skw">click</span>(<img src="1509147510293.png" />);
+<span class="skw">type</span>(<span class="str">"Google Chrome"</span>);
+<span class="skw">type</span>(Key.ENTER);
+<span class="skw">wait</span>(<img src="1509147713937.png" />);
+<span class="skw">click</span>(<img src="1509147762955.png" />);
+paste(<span class="str">"http://localhost/ChuvaInc/ChuWar/"</span>);
+<span class="skw">type</span>(Key.ENTER);
+<span class="skw">wait</span>(<img src="1509148189422.png" />);
+
+<span class="cmt">#Criando Menu de Seleção de Testes</span>
+opcoes = (<span class="str">'1'</span>, <span class="str">'2'</span>);
+escolha = select(<span class="str">"Escolha 1 para teste de Login ou 2 para teste de Registro: "</span>, options = opcoes);
+
+<span class="kw">if</span> escolha == opcoes[<span class="dig">0</span>]:
+
+    <span class="cmt">#Página Carregada - Testando para campos vazios</span>
+    <span class="skw">click</span>(<img src="1509148329279.png" />);
+    <span class="skw">wait</span>(<img src="1509148516450.png" />);
+
+    <span class="cmt">#Testando para entrada somente de usuário</span>
+    <span class="skw">click</span>(<img src="1509148792209.png" />);
+    <span class="skw">type</span>(<span class="str">"Teste01"</span>);
+    <span class="skw">click</span>(<img src="1509148329279.png" />);
+    <span class="skw">wait</span>(<img src="1509148516450.png" />);
+
+    <span class="cmt">#Testando para usuário correto e senha errada</span>
+    <span class="skw">click</span>(<img src="1509148792209.png" />);
+    <span class="skw">type</span>(<span class="str">"Teste01"</span>);
+    <span class="skw">type</span>(Key.TAB);
+    <span class="skw">type</span>(<span class="str">"senhaerrada"</span>);
+    <span class="skw">click</span>(<img src="1509148329279.png" />);
+    <span class="skw">wait</span>(<img src="1509150616345.png" />);
+
+    <span class="cmt">#Testando com usuário correto e senha correta</span>
+    <span class="skw">click</span>(<img src="1509148792209.png" />);
+    <span class="skw">type</span>(<span class="str">"Teste01"</span>);
+    <span class="skw">type</span>(Key.TAB);
+    <span class="skw">type</span>(<span class="str">"123456789"</span>);
+    <span class="skw">click</span>(<img src="1509148329279.png" />);
+    <span class="skw">wait</span>(<img src="1509150691340.png" />);
+    <span class="skw">click</span>(<img src="1509150702770.png" />);
+    <span class="skw">popup</span>(<span class="str">"Teste de Login Concluido com Sucesso!"</span>);
+
+<span class="kw">else</span>:
+
+    <span class="cmt">#Página Carregada - Testando com Campos Vazios</span>
+    <span class="skw">click</span>(<img src="1509151729549.png" />);
+    <span class="skw">click</span>(<img src="1509151929229.png" />);
+    <span class="skw">wait</span>(<img src="1509151945935.png" />);
+
+    <span class="cmt">#Testando com Entrada somente de Username</span>
+    <span class="skw">click</span>(<img src="1509152202418.png" />);
+    <span class="skw">type</span>(<span class="str">"Sikuli01"</span>);
+    <span class="skw">click</span>(<img src="1509151929229.png" />);
+    <span class="skw">wait</span>(<img src="1509151945935.png" />);
+
+    <span class="cmt">#Testando com entrada somente de Username e Nome</span>
+    <span class="skw">click</span>(<img src="1509152202418.png" />);
+    <span class="skw">type</span>(<span class="str">"Sikuli01"</span>);
+    <span class="skw">type</span>(Key.TAB);
+    <span class="skw">type</span>(<span class="str">"Sikuli"</span>);
+    <span class="skw">click</span>(<img src="1509151929229.png" />);
+    <span class="skw">wait</span>(<img src="1509151945935.png" />);
+
+    <span class="cmt">#Testando somente com entrada de Nome</span>
+    <span class="skw">click</span>(<img src="1509152448748.png" />);
+    <span class="skw">type</span>(<span class="str">"Sikuli"</span>);
+    <span class="skw">click</span>(<img src="1509151929229.png" />);
+    <span class="skw">wait</span>(<img src="1509151945935.png" />);
+
+    <span class="cmt">#Testando somente com entrada de Senha</span>
+    <span class="skw">click</span>(<img src="1509152553548.png" />);
+    <span class="skw">type</span>(<span class="str">"123456789"</span>);
+    <span class="skw">click</span>(<img src="1509151929229.png" />);
+    <span class="skw">wait</span>(<img src="1509151945935.png" />);
+
+    <span class="cmt">#Testando com entrada de Nome e Senha</span>
+    <span class="skw">click</span>(<img src="1509152448748.png" />);
+    <span class="skw">type</span>(<span class="str">"Sikuli"</span>);
+    <span class="skw">type</span>(Key.TAB);
+    <span class="skw">type</span>(<span class="str">"123456789"</span>);
+    <span class="skw">click</span>(<img src="1509151929229.png" />);
+    <span class="skw">wait</span>(<img src="1509151945935.png" />);
+
+    <span class="cmt">#Testando com entrada de Usuario, Nome e Senha Muito Curta</span>
+    <span class="skw">click</span>(<img src="1509152202418.png" />);
+    <span class="skw">type</span>(<span class="str">"Sikuli01"</span>);
+    <span class="skw">type</span>(Key.TAB);
+    <span class="skw">type</span>(<span class="str">"Sikuli"</span>);
+    <span class="skw">type</span>(Key.TAB);
+    <span class="skw">type</span>(<span class="str">"1234567"</span>);
+    <span class="skw">click</span>(<img src="1509151929229.png" />);
+    <span class="skw">wait</span>(<img src="1509152734618.png" />);
+
+    <span class="cmt">#Testando com Usuário, Nome e Senha Corretamente</span>
+    <span class="skw">click</span>(<img src="1509152202418.png" />);
+    <span class="skw">type</span>(<span class="str">"Sikuli01"</span>);
+    <span class="skw">type</span>(Key.TAB);
+    <span class="skw">type</span>(<span class="str">"Sikuli"</span>);
+    <span class="skw">type</span>(Key.TAB);
+    <span class="skw">type</span>(<span class="str">"123456789"</span>);
+    <span class="skw">click</span>(<img src="1509151929229.png" />);
+    <span class="skw">wait</span>(<img src="1509152792694.png" />);
+    <span class="skw">popup</span>(<span class="str">"Teste de Registro Concluido com Sucesso!"</span>);
+</pre>
+</body>
+</html>
